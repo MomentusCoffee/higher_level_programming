@@ -1,0 +1,5 @@
+#!/bin/bash
+# A Shell Script that runs a Python Script saved in an environment variable $SCRIPT
+
+export SCRIPT=main.py
+python3 $SCRIPT

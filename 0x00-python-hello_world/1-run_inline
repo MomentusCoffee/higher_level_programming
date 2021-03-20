@@ -1,0 +1,6 @@
+#!/bin/bash
+# Shell Script that runs Python code
+# Example:
+# export INLINECODE='print("Python Lesson: {}".format(101))'
+# ./1-run_inline
+python3 -c "$INLINECODE"
