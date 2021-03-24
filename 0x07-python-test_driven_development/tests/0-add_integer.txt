@@ -1,0 +1,45 @@
+>>> add_integer = __import__('0-add_integer').add_integer
+
+============
+ Edge Cases
+============
+
+>>> add_integer(1, 2)
+3
+
+
+>>> add_integer(2)
+100
+
+Check if function passes negative ints
+
+>>> add_integer(-24335,99999999)
+99975664
+
+>>> add_integer(2.335,-9.999999)
+-7
+
+>>> add_integer(2, 3, 4)
+Traceback (most recent call last):
+TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
+>>> add_integer()
+Traceback (most recent call last):
+TypeError: add_integer() missing 1 required positional argument: 'a'
+
+>>> add_integer(2, "five")
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+>>> add_integer("One")
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add_integer(float("NaN"))
+Traceback (most recent call last):
+ValueError: cannot convert float NaN to integer
+
+>>> add_integer(float("inf"), 8)
+Traceback (most recent call last):
+...
+OverflowError: cannot convert float infinity to integer
