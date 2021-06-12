@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# README.md template maker for python projects
+
+# Gets the name of project directory
+title="$(pwd | rev | cut -d"/" -f1 | rev | cut -c 6- | tr _ " " | sed 's/-/ - /g' | sed -e 's/\b\(.\)/\u\1/g')"
+
+# Gets the name of project files
+file_name="$(find ./* -maxdepth 0 ! -name "*main*" ! -name "readme_template" ! -name "*.md" ! -name "*~" ! -name "*__*" ! -name "*test*" -type f | cut -c 3- | sort -n)"
+
+project_name() {
+    for name in ${file_name}; do
+	echo "$(printf "| %s | %s |" "$name" "$(grep -h '"""' $name | tr -d '"""')")"
+    done
+}
+
+# README Template
+cat > README.md <<- EOF
+## Coding Boot Camp Material
+
+***
+
+# ${title}
+
+### Description
+In this project lesson you will learn:
+
+### File Content
+This repository contains the following files*:
+
+| File | Task |
+| :--- | :--- |
+$(project_name)
+
+> All files have been tested and compiled on Ubuntu 14.04 LTS
+
+EOF
